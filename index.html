@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>DFO Protocol</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Home";
+    var mkdocs_page_input_path = "README.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/typescript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> DFO Protocol</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#microservices-on-ethereum-for-independent-dapps-ugradable-by-voting">Microservices on Ethereum 👽 for Independent Dapps ugradable by voting  😱</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#authors-marco-vasapollo-vasapower-and-alessandro-mario-lagana-toschi-alessandromlt-amp98amp114amp111amp64amp98amp117amp105amp100amp108amp46amp108amp105amp102amp101">Authors: Marco Vasapollo (@vasapower) and Alessandro Mario Laganà Toschi (@alessandromlt) | amp#98;amp#114;amp#111;amp#64;amp#98;amp#117;amp#105;amp#100;amp#108;amp#46;amp#108;amp#105;amp#102;amp#101;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#join-us-httpswwwnotionsocommunity-guidelines-a03ceeab28254eb3944ab85320be70de">Join us: https://www.notion.so/Community-Guidelines-a03ceeab28254eb3944ab85320be70de</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-basis">The Basis</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING/">Contributing</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Contracts</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="contracts/ICommonUtilities/">ICommonUtilities</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="contracts/IDoubleProxy/">IDounleProxy</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="contracts/IMVDFunctionalitiesManager/">IMVDFunctionalitiesManager</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="contracts/IMVDFunctionalityModelsManager/">IMVDFunctionalityModelsManager</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="contracts/IMVDFunctionalityProposal/">IMVDFunctionalityProposal</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="contracts/IMVDFunctionalityProposalManager.md">IMVDFunctionalityProposalManager</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="contracts/IMVDProxy/">IMVDProxy</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="contracts/IMVDWallet/">IMVDWallet</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="contracts/IVotingToken/">IVotingToken</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">DFO Protocol</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Home</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="decentralized-flexible-organization-dfo">Decentralized Flexible Organization - DFO</h1>
+<h2 id="microservices-on-ethereum-for-independent-dapps-ugradable-by-voting">Microservices on Ethereum 👽 for Independent Dapps ugradable by voting  😱</h2>
+<h5 id="authors-marco-vasapollo-vasapower-and-alessandro-mario-lagana-toschi-alessandromlt-amp98amp114amp111amp64amp98amp117amp105amp100amp108amp46amp108amp105amp102amp101">Authors: Marco Vasapollo (<a href="https://twitter.com/vasapower_9">@vasapower</a>) and Alessandro Mario Laganà Toschi (<a href="https://twitter.com/alessandromlt">@alessandromlt</a>) | <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#114;&#111;&#64;&#98;&#117;&#105;&#100;&#108;&#46;&#108;&#105;&#102;&#101;">&#98;&#114;&#111;&#64;&#98;&#117;&#105;&#100;&#108;&#46;&#108;&#105;&#102;&#101;</a></h5>
+<h4 id="join-us-httpswwwnotionsocommunity-guidelines-a03ceeab28254eb3944ab85320be70de">Join us: https://www.notion.so/Community-Guidelines-a03ceeab28254eb3944ab85320be70de</h4>
+<h3 id="the-basis">The Basis</h3>
+<p>DFO is a new concept that reshapes the way to build Decentralized Applications (DApps), enabling the creation of <strong>extendible, improvable and fixable Systems</strong>, using an approach called <strong>Smart Contract as Microservice</strong> which avoids the slow and dangerous monolythic Smart Contract development procedures.</p>
+<blockquote>
+<p>Because of <strong>everything is completely deployed and running on the Ethereum blockchain</strong>, the need of Centralized or Distributed Servers is finally bypassed.</p>
+</blockquote>
+<p>In DFO, every DApp functionality is a <strong>Smart Contract acting like a Microservice</strong>, which can also be <strong>stateless</strong> and therefore <strong>reusable</strong> in different applications.</p>
+<p>Instead of directly using Smart Contracts functions, calling their specific address, in DFO you will interact with the <strong>Proxy</strong> which will keep track of the latest correct versions of all Microservices (located in different addresses) composing your DApp.</p>
+<p><img alt="alt text" src="https://raw.githubusercontent.com/b-u-i-d-l/dfo-hub/master/assets/img/wall1.png" title="The Smart Contract as Microservice Approach in DFO" /></p>
+<blockquote>
+<p>No matter how many Microservices will you attach, detach or replace to a DFO since its creation. <strong>The address of your Dapp will be always the same, forever</strong>.</p>
+</blockquote>
+<p>DFO is completely <strong>Community Driven</strong>. This means that every strategic decision about the DApp Functionalities and their future is taken by its Token Holders.
+In fact, to add/replace/remove a Microservice, the proposer must interact with the Proxy to start a <strong>Survey</strong> which can be voted by the ones holding the <strong>ERC20 Voting Tokens</strong> linked to that DFO, staking them to accept or refuse the proposal. The governance rules (that establish the success or the failure of a Survey) are, in turn, Functionalities of the DFO itself  located within Microservices that can be updated too... through Proposals!</p>
+<p>The Proxy, the Voting Token, the Proposals, the Governance Rules and some other Smart Contracts are all the components that make up every single DFO.</p>
+<p>Every DFO is a bunch of Smart Contracts cooperating each other to let users:</p>
+<ul>
+<li>using Functionalities in both Read and Write Mode;</li>
+<li>proposing to add/remove/replace these Functionalities through Surveys;</li>
+<li>voting to Accept/Refuse them through Voting Tokens.</li>
+</ul>
+<p>Even the Smart Contracts of a DFO can be updated to address bug fixes or to expand the potential of the protocol just making a Proposal to the Token Holders Community.</p>
+<p>To let people create and use DFOs, we built <strong>DFOHub</strong>, our R&amp;D community-driven project that aims to improve the DFO protocol itself by managing its progress through a DFO maintained by its own token holders, who can propose or vote for improvements and bug fixes with anonymous, decentralized and very easy steps.
+DFOHub extremely facilitates the deployment processes for a new DFO, you can exploit it in two ways:</p>
+<ol>
+<li>using the easy steps of the wizard we coded on <a href="https://b-u-i-d-l.github.io/dfo-hub/">DFOHub</a>;</li>
+<li>[<strong>COMING SOON</strong>] using the integration SDK which lets you easily integrate DFO protocol capabilities in your DApp.</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="CONTRIBUTING/" class="btn btn-neutral float-right" title="Contributing">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+        <span style="margin-left: 15px"><a href="CONTRIBUTING/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.1.2
+Build Date UTC : 2020-09-19 15:08:04.416391+00:00
+-->
