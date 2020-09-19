@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>ICommonUtilities - DFO Protocol</title>
+  <title>IMVDFunctionalityProposalManager - DFO Protocol</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "ICommonUtilities";
-    var mkdocs_page_input_path = "contracts/ICommonUtilities.md";
+    var mkdocs_page_name = "IMVDFunctionalityProposalManager";
+    var mkdocs_page_input_path = "contracts/IMVDFunctionalityProposalManager.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -62,9 +62,7 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="#">Contracts</a>
     <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">ICommonUtilities</a>
-    <ul class="current">
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="../ICommonUtilities/">ICommonUtilities</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../IDoubleProxy/">IDounleProxy</a>
                 </li>
@@ -74,7 +72,9 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../IMVDFunctionalityProposal/">IMVDFunctionalityProposal</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../IMVDFunctionalityProposalManager/">IMVDFunctionalityProposalManager</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">IMVDFunctionalityProposalManager</a>
+    <ul class="current">
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../IMVDProxy/">IMVDProxy</a>
                 </li>
@@ -114,7 +114,7 @@
         
       
     
-    <li>ICommonUtilities</li>
+    <li>IMVDFunctionalityProposalManager</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -125,26 +125,42 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="contract-icommonutilities">Contract ICommonUtilities</h2>
+                <h2 id="contract-imvdfunctionalityproposalmanager">Contract IMVDFunctionalityProposalManager</h2>
 <ul>
-<li><strong>Path:</strong> contracts/ICommonUtilities.sol</li>
+<li><strong>Path:</strong> contracts/IMVDFunctionalityProposalManager.sol</li>
 <li><strong>Version:</strong> 1</li>
-<li><strong>Title:</strong> Common Utilities</li>
+<li><strong>Title:</strong> Functionality Proposal Manager</li>
 </ul>
-<p>Collection of simple utilities</p>
+<p>Microservice for adding new proposals</p>
 <h2 id="methods">Methods</h2>
-<h3 id="comparestringsstringstring">compareStrings(string,string)</h3>
-<p>Compare to strings</p>
-<h3 id="toaddressbytes">toAddress(bytes)</h3>
-<p>Convert bytes address to address</p>
-<h3 id="tolowercasestring">toLowerCase(string)</h3>
-<p>Convert a string to lowercase</p>
-<h3 id="tostringaddress">toString(address)</h3>
-<p>Convert address to string</p>
-<h3 id="tostringuint256">toString(uint256)</h3>
-<p>Convert uint to string</p>
-<h3 id="touint256bytes">toUint256(bytes)</h3>
-<p>Convert bytes address to uint</p>
+<h3 id="getproxy">getProxy()</h3>
+<p>GET the Proxy contract address</p>
+<h3 id="isvalidproposaladdress">isValidProposal(address)</h3>
+<p>Check that a proposal is valid</p>
+<h4 id="params">Params</h4>
+<ul>
+<li><code>proposal</code>: Address of the proposal to check</li>
+</ul>
+<h4 id="returns">Returns</h4>
+<ul>
+<li><code>isValid</code>: Boolean indicating the validity of the function</li>
+</ul>
+<h3 id="newproposalstringaddressstringstringstring">newProposal(string,address,string,string,string)</h3>
+<p>Add a new Proposal</p>
+<h4 id="params_1">Params</h4>
+<ul>
+<li><code>codeName</code>: ID of the proposal</li>
+<li><code>location</code>: Address of the functionality/microservice to call</li>
+<li><code>methodSignature</code>: Name of the method of the microservice you want to call</li>
+<li><code>replaces</code>: // DOCUMENT</li>
+<li><code>returnAbiParametersArray</code>: Array of return values obtained from the called microservice's method</li>
+</ul>
+<h4 id="returns_1">Returns</h4>
+<ul>
+<li><code>proposal</code>: Address of the newly added proposal</li>
+</ul>
+<h3 id="setproxy">setProxy()</h3>
+<p>SET the Proxy contract address</p>
               
             </div>
           </div>
@@ -152,10 +168,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../IDoubleProxy/" class="btn btn-neutral float-right" title="IDounleProxy">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../IMVDProxy/" class="btn btn-neutral float-right" title="IMVDProxy">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../CONTRIBUTING/" class="btn btn-neutral" title="Contributing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../IMVDFunctionalityProposal/" class="btn btn-neutral" title="IMVDFunctionalityProposal"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -181,10 +197,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../../CONTRIBUTING/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../IMVDFunctionalityProposal/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../IDoubleProxy/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../IMVDProxy/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
