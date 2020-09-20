@@ -131,35 +131,47 @@
 <li><strong>Version:</strong> 1</li>
 <li><strong>Title:</strong> Interface for the Functionalities Manager</li>
 </ul>
+<p>Functionalities Manager is the one that keeps track of all the Microservices of a DFO. It also contains all the logic to set/unset Microservices after a Proposal.</p>
 <h2 id="methods">Methods</h2>
 <h3 id="addfunctionalitystringaddressuint256addressboolstringstringboolbool">addFunctionality(string,address,uint256,address,bool,string,string,bool,bool)</h3>
 <p>Add a functionality to the Functionalities Manager</p>
 <h4 id="params">Params</h4>
 <ul>
-<li><code>codeName</code>: ID of the Functionality</li>
+<li><code>codeName</code>: ID of the microservice, to be called by the user through Proxy.</li>
 <li><code>isInternal</code>: Boolean flag controlling wether the microservice can be called from anyone (false) or can be called only by other microservices (true)</li>
 <li><code>location</code>: Address of the functionality/microservice to call</li>
 <li><code>methodSignature</code>: Name of the method of the microservice you want to call</li>
-<li><code>needsSender</code>: All microservices calls are made py the Proxy, with this boolean flag you can forward the address that called the Proxy in the first place</li>
+<li><code>needsSender</code>: All microservices calls are made by the Proxy, with this boolean flag you can forward the address that called the Proxy in the first place</li>
 <li><code>returnAbiParametersArray</code>: Array of return values obtained from the called microservice's method</li>
-<li><code>sourceLocation</code>: ROBE location of the source code</li>
-<li><code>sourceLocationId</code>: ROBE id</li>
+<li><code>sourceLocation</code>: Location of the source code, saved in concatenated Base64 data chunks</li>
+<li><code>sourceLocationId</code>: Base64 data chunk id of the corresponding Microservice</li>
 <li><code>submittable</code>: Boolean flag controlling wether the microservice writes data to the chain</li>
 </ul>
 <h3 id="addfunctionalitystringaddressuint256addressboolstringstringboolbooluint256">addFunctionality(string,address,uint256,address,bool,string,string,bool,bool,uint256)</h3>
 <p>Replace a Functionality in the Functionalities Manager</p>
 <h4 id="params_1">Params</h4>
 <ul>
-<li><code>codeName</code>: ID of the Functionality</li>
+<li><code>codeName</code>: ID of the microservice, to be called by the user through Proxy.</li>
 <li><code>isInternal</code>: Boolean flag controlling wether the microservice can be called from anyone (false) or can be called only by other microservices (true)</li>
 <li><code>location</code>: Address of the functionality/microservice to call</li>
 <li><code>methodSignature</code>: Name of the method of the microservice you want to call</li>
 <li><code>needsSender</code>: All microservices calls are made py the Proxy, with this boolean flag you can forward the address that called the Proxy in the first place</li>
 <li><code>position</code>: Position of the Functionality to replace</li>
 <li><code>returnAbiParametersArray</code>: Array of return values obtained from the called microservice's method</li>
-<li><code>sourceLocation</code>: ROBE location of the source code</li>
-<li><code>sourceLocationId</code>: ROBE id</li>
+<li><code>sourceLocation</code>: Location of the source code, saved in concatenated Base64 data chunks</li>
+<li><code>sourceLocationId</code>: Base64 data chunk id of the corresponding Microservice</li>
 <li><code>submittable</code>: Boolean flag controlling wether the microservice writes data to the chain</li>
+</ul>
+<h3 id="clearcallingcontext">clearCallingContext()</h3>
+<p>This method can be called only by the Proxy. Clears the context at the end of the Microservice execution</p>
+<h3 id="functionalitiestojson">functionalitiesToJSON()</h3>
+<p>For frontend purposes. Gives back the info about functionalities using the JSON Array format</p>
+<h3 id="functionalitiestojsonuint256uint256">functionalitiesToJSON(uint256,uint256)</h3>
+<p>For frontend purposes. Gives back the info about functionalities using the JSON Array format</p>
+<h4 id="params_2">Params</h4>
+<ul>
+<li><code>l</code>: the array offset</li>
+<li><code>start</code>: the start position of the array</li>
 </ul>
 <h3 id="functionalitynames">functionalityNames()</h3>
 <p>GET all Functionalities Names (IDs)</p>
@@ -169,65 +181,101 @@
 <p>Given a Functionality ID return its JSON encoded version</p>
 <h3 id="getfunctionalitiesamount">getFunctionalitiesAmount()</h3>
 <p>GET the amount of functionalities present in the Functionalities Manager</p>
+<h3 id="getfunctionalitydatastring">getFunctionalityData(string)</h3>
+<p>Utility method to retrieve all important stuff to call a Microservice</p>
+<h4 id="params_3">Params</h4>
+<ul>
+<li><code>codeName</code>: the codeName of the Microservice you need info</li>
+</ul>
+<h4 id="returns">Returns</h4>
+<ul>
+<li><code>_0</code>: the address of the contract including the logic of the Microservice, the method signature of the Microservice, the position in the Functionalities array, the location of the source code, saved in byte64 concatenated data chunks, the locationId of the source code.</li>
+</ul>
 <h3 id="getproxy">getProxy()</h3>
-<p>GET the proxy</p>
+<p>GET the Proxy</p>
 <h3 id="hasfunctionalitystring">hasFunctionality(string)</h3>
 <p>Check that the FunctionalitiesManager has a specific Functionality</p>
-<h4 id="params_2">Params</h4>
+<h4 id="params_4">Params</h4>
 <ul>
 <li><code>codeName</code>: ID of the Functionality to be checked</li>
 </ul>
-<h4 id="returns">Returns</h4>
+<h4 id="returns_1">Returns</h4>
 <ul>
 <li><code>output</code>: Boolean flag indicating wether the Functionalities Manager has the given Functionality.</li>
 </ul>
 <h3 id="initaddressuint256addressuint256addressuint256addressuint256address">init(address,uint256,address,uint256,address,uint256,address,uint256,address)</h3>
 <p>Initializer logic used during the constructor call</p>
-<h4 id="params_3">Params</h4>
+<h4 id="params_5">Params</h4>
 <ul>
 <li><code>checkVoteResultFunctionalityAddress</code>: Address for the Functionality that controls the check for determining if a Proposal was successful or it failed</li>
-<li><code>checkVoteResultSourceLocationId</code>: ROBE id</li>
+<li><code>checkVoteResultSourceLocationId</code>: Base64 data chunk id of the corresponding Microservice</li>
 <li><code>getEmergencyMinimumBlockNumberFunctionalityAddress</code>: Address for the Functionality that controls the block duration of emergency proposals</li>
-<li><code>getEmergencyMinimumBlockNumberSourceLocationId</code>: ROBE id</li>
+<li><code>getEmergencyMinimumBlockNumberSourceLocationId</code>: Base64 data chunk id of the corresponding Microservice</li>
 <li><code>getEmergencySurveyStakingFunctionalityAddress</code>: Address for the Functionality that controls the minimum amount of vote to be staked in order to start an Emergency Proposal</li>
-<li><code>getEmergencySurveyStakingSourceLocationId</code>: ROBE id</li>
+<li><code>getEmergencySurveyStakingSourceLocationId</code>: Base64 data chunk id of the corresponding Microservice</li>
 <li><code>getMinimumBlockNumberFunctionalityAddress</code>: Address of the Functionality that controls the block duration of regular proposals</li>
-<li><code>getMinimumBlockNumberSourceLocationId</code>: ROBE id</li>
-<li><code>sourceLocation</code>: ROBE location of the source code</li>
+<li><code>getMinimumBlockNumberSourceLocationId</code>: Base64 data chunk id of the corresponding Microservice</li>
+<li><code>sourceLocation</code>: Location of the source code, saved in concatenated Base64 data chunks</li>
 </ul>
 <h3 id="isauthorizedfunctionalityaddress">isAuthorizedFunctionality(address)</h3>
 <p>Check that the Functionality is an authorized one</p>
-<h4 id="params_4">Params</h4>
-<ul>
-<li><code>functionality</code>: Functionality to be checked</li>
-</ul>
-<h4 id="returns_1">Returns</h4>
-<ul>
-<li><code>success</code>: Boolean flag indicating the authorization status of the Functionality</li>
-</ul>
-<h3 id="isvalidfunctionalityaddress">isValidFunctionality(address)</h3>
-<p>Check that the Functionality is a valid one</p>
-<h4 id="params_5">Params</h4>
+<h4 id="params_6">Params</h4>
 <ul>
 <li><code>functionality</code>: Functionality to be checked</li>
 </ul>
 <h4 id="returns_2">Returns</h4>
 <ul>
+<li><code>success</code>: Boolean flag indicating the authorization status of the Functionality</li>
+</ul>
+<h3 id="isvalidfunctionalityaddress">isValidFunctionality(address)</h3>
+<p>Check that the Functionality is a valid one</p>
+<h4 id="params_7">Params</h4>
+<ul>
+<li><code>functionality</code>: Functionality to be checked</li>
+</ul>
+<h4 id="returns_3">Returns</h4>
+<ul>
 <li><code>valid</code>: Boolean flag indicating the validity of the Functionality</li>
+</ul>
+<h3 id="preconditioncheckstringbytesuint8addressuint256">preConditionCheck(string,bytes,uint8,address,uint256)</h3>
+<p>Method called by the Proxy when someone calls a Microservice. It has a double function: checks if you are in the correct context (e.g. are you trying to call a non-submitable Microservice through the correct "read" function of the Proxy?) and gives back the address of the Microservice and the correct payload that the proxy will use to execute a .call() method.</p>
+<h4 id="params_8">Params</h4>
+<ul>
+<li><code>codeName</code>: the Microservice to be called</li>
+<li><code>data</code>: the payload to be used within the Microservice (ABI encoded)</li>
+<li><code>sender</code>: the original msg.sender of the Proxy read/submit call, to be used if the Microservice has the needsSender flag set to true</li>
+<li><code>submittable</code>: 1 true, 0 false</li>
+<li><code>value</code>: the original msg.value of the Proxy submit call, to be used if the Microservice is submitable and has the needsSender flag set to true</li>
 </ul>
 <h3 id="removefunctionalitystring">removeFunctionality(string)</h3>
 <p>Remove a Functionality from the Functionalities Manager</p>
-<h4 id="params_6">Params</h4>
+<h4 id="params_9">Params</h4>
 <ul>
 <li><code>codeName</code>: ID of the Functionality to remove</li>
 </ul>
-<h4 id="returns_3">Returns</h4>
+<h4 id="returns_4">Returns</h4>
 <ul>
 <li><code>position</code>: Position of the removed functionality</li>
 <li><code>removed</code>: Boolean flag representing the success status of the operation</li>
 </ul>
+<h3 id="setcallingcontextaddress">setCallingContext(address)</h3>
+<p>This method can be called only by the Proxy. When a new submitable Microservice is called, this method is used to let other DFO Delegates (e.g. StateHolder) to be fully operative. If you call a Microservice directly, bypassing the Proxy, the context will be blank and Delegates cannot allow you to do any operation.</p>
+<h4 id="params_10">Params</h4>
+<ul>
+<li><code>location</code>: The address of the currently running Microservice</li>
+</ul>
+<h4 id="returns_5">Returns</h4>
+<ul>
+<li><code>changed</code>: True if the calling context is correctly set, false if the context was already set (this happens, for example, when someone calls a Microservice including a logic to call another Microservice through the Proxy).</li>
+</ul>
 <h3 id="setproxy">setProxy()</h3>
-<p>SET the proxy</p>
+<p>SET the Proxy</p>
+<h3 id="setupfunctionalityaddress">setupFunctionality(address)</h3>
+<p>callable by the Proxy only. Sets up the new Microservice add/replace/remove action, grabbing the data from the MVDFunctionalityProposal at the given address</p>
+<h4 id="params_11">Params</h4>
+<ul>
+<li><code>proposalAddress</code>: the address of the Proposal to be set</li>
+</ul>
               
             </div>
           </div>

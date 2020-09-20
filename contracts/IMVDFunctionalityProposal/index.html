@@ -134,9 +134,9 @@
 <p>Proposals are the defacto heart of the protocol since they allow voting token holders potentially alter all of the logic of a DFO and even extend it via custom logic.</p>
 <h2 id="methods">Methods</h2>
 <h3 id="acceptuint256">accept(uint256)</h3>
-<p>// DOCUMENT</p>
+<p>Vote to accept the Proposal, staking your voting tokens. Can be called only if the Proposal is still running.</p>
 <h3 id="disable">disable()</h3>
-<p>// DOCUMENT</p>
+<p>Can be used by external Proposal Managers to disable not-yet started Surveys</p>
 <h3 id="getcodename">getCodeName()</h3>
 <p>GET the Proposal Functionality string ID</p>
 <h3 id="getlocation">getLocation()</h3>
@@ -148,22 +148,22 @@
 <h3 id="getproxy">getProxy()</h3>
 <p>GET the Proxy address</p>
 <h3 id="getreplaces">getReplaces()</h3>
-<p>// DOCUMENTATION</p>
+<p>codeName of the microservice that will be replaced by this Proposal, can be blank.</p>
 <h3 id="getreturnabiparametersarray">getReturnAbiParametersArray()</h3>
 <p>GET the array of return values obtained from the called microservice's method</p>
 <h3 id="getsourcelocation">getSourceLocation()</h3>
-<p>GET the ROBE source location</p>
+<p>GET the Location of the source code, saved in concatenated Base64 data chunks</p>
 <h3 id="getsourcelocationid">getSourceLocationId()</h3>
-<p>GET the ROBE id</p>
+<p>GET the Base64 data chunk id of the corresponding Microservice</p>
 <h3 id="getsurveyduration">getSurveyDuration()</h3>
 <p>GET the duration of the Proposal in number of blocks</p>
 <h3 id="getsurveyendblock">getSurveyEndBlock()</h3>
 <p>GET The proposal end block</p>
 <h3 id="getvoteaddress">getVote(address)</h3>
-<p>GET the current status of the voting</p>
+<p>GET the current status of the voting of the given address</p>
 <h4 id="params">Params</h4>
 <ul>
-<li><code>addr</code>: // DOCUMENT</li>
+<li><code>addr</code>: The address of the voter you want to know status</li>
 </ul>
 <h4 id="returns">Returns</h4>
 <ul>
@@ -171,48 +171,53 @@
 <li><code>refuse</code>: Amount of NO votes</li>
 </ul>
 <h3 id="getvotes">getVotes()</h3>
-<p>// DOCUMENT</p>
+<p>Get the current votes status</p>
+<h4 id="returns_1">Returns</h4>
+<ul>
+<li><code>_0</code>: accept Amount of YES votes</li>
+<li><code>_1</code>: refuse Amount of NO votes</li>
+</ul>
 <h3 id="getvoteshardcaptoreach">getVotesHardCapToReach()</h3>
 <p>GET the HardCap value</p>
 <h3 id="initstringaddressstringstringstringaddress">init(string,address,string,string,string,address)</h3>
 <p>Functionality Initializer</p>
 <h4 id="params_1">Params</h4>
 <ul>
-<li><code>codeName</code>: String ID of the Functionality</li>
+<li><code>codeName</code>: ID of the microservice, to be called by the user through Proxy, can be blank.</li>
 <li><code>location</code>: Address of the functionality/microservice to call</li>
 <li><code>methodSignature</code>: Name of the method of the microservice you want to call</li>
 <li><code>proxy</code>: Address of the proxy</li>
-<li><code>replaces</code>: // DOCUMENTATION</li>
+<li><code>replaces</code>: codeName of the microservice that will be replaced by this Proposal, can be blank.</li>
 <li><code>returnAbiParametersArray</code>: Array of return values obtained from the called microservice's method</li>
 </ul>
 <h3 id="isdisabled">isDisabled()</h3>
-<p>// DOCUMENT</p>
+<p>Check if a Proposal was canceled before its start</p>
 <h3 id="isemergency">isEmergency()</h3>
 <p>GET the boolean flag indicating wether the Proposal is an Emergency Proposal</p>
 <h3 id="isinternal">isInternal()</h3>
 <p>GET the boolean flag controlling wether the microservice can be called from anyone (false) or can be called only by other microservices (true)</p>
 <h3 id="isterminated">isTerminated()</h3>
-<p>// DOCUMENT</p>
+<p>Check if the Proposal reached the natural time termination or the reachement of the Hard Cap.</p>
 <h3 id="isvoteshardcapreached">isVotesHardCapReached()</h3>
 <p>Check that the HardCap has been reached</p>
 <h3 id="issubmittable">issubmittable()</h3>
 <p>GET the boolean flag controlling wether the microservice writes data to the chain</p>
 <h3 id="movetoacceptuint256">moveToAccept(uint256)</h3>
-<p>// DOCUMENT</p>
+<p>Move some "refuse" votes to "accept". Can be called only if the Proposal is still running.</p>
 <h3 id="movetorefuseuint256">moveToRefuse(uint256)</h3>
-<p>// DOCUMENT</p>
+<p>Move some "accept" votes to "refuse". Can be called only if the Proposal is still running.</p>
 <h3 id="needssender">needsSender()</h3>
 <p>GET the boolean flag controlling wether the original Proxy caller address should be forwarded or not</p>
 <h3 id="refuseuint256">refuse(uint256)</h3>
-<p>// DOCUMENT</p>
+<p>Vote to refuse the Proposal, staking your voting tokens. Can be called only if the Proposal is still running.</p>
 <h3 id="retireacceptuint256">retireAccept(uint256)</h3>
-<p>// DOCUMENT</p>
+<p>Retire your votes. Can be called only if the Proposal is still running.</p>
 <h3 id="retireall">retireAll()</h3>
-<p>// DOCUMENT</p>
+<p>Retire all your votes, retreiving back your staked voting tokens. Can be called only if the Proposal is still running.</p>
 <h3 id="retirerefuseuint256">retireRefuse(uint256)</h3>
-<p>// DOCUMENT</p>
+<p>Retire your votes. Can be called only if the Proposal is still running.</p>
 <h3 id="set">set()</h3>
-<p>// DOCUMENT</p>
+<p>Callable by the Proxy only. Marks this Proposal as definitively terminate. User can still call the withdrawAll() function to withdraw the tokens, of course.</p>
 <h3 id="setcollateraldatabooladdressuint256boolboolbooladdressuint256">setCollateralData(bool,address,uint256,bool,bool,bool,address,uint256)</h3>
 <p>set the collateral attributes of the proposal</p>
 <h4 id="params_2">Params</h4>
@@ -221,19 +226,19 @@
 <li><code>isInternal</code>: Boolean flag controlling wether the microservice can be called from anyone (false) or can be called only by other microservices (true)</li>
 <li><code>needsSender</code>: All microservices calls are made py the Proxy, with this boolean flag you can forward the address that called the Proxy in the first place</li>
 <li><code>proposer</code>: Address of the proposer</li>
-<li><code>sourceLocation</code>: ROBE location of the source code</li>
-<li><code>sourceLocationId</code>: ROBE id</li>
+<li><code>sourceLocation</code>: Location of the source code, saved in concatenated Base64 data chunks</li>
+<li><code>sourceLocationId</code>: Base64 data chunk id of the corresponding Microservice</li>
 <li><code>submittable</code>: Boolean flag controlling wether the microservice writes data to the chain</li>
 <li><code>votesHardCap</code>: Hardcap value</li>
 </ul>
 <h3 id="start">start()</h3>
-<p>// DOCUMENT</p>
+<p>Can be used by external Proposal Managers to delay the Survey Start</p>
 <h3 id="terminate">terminate()</h3>
-<p>// DOCUMENT</p>
+<p>Force the Proposal to call the Proxy and execute the finalization operations. Can be called only if the Proposal reaches the Hard Cap or the final Block.</p>
 <h3 id="tojson">toJSON()</h3>
 <p>GET the json representation of the Functionality</p>
 <h3 id="withdraw">withdraw()</h3>
-<p>// DOCUMENT</p>
+<p>Withdraw all the token you staked. Can be called only if the Proposal reaches the Hard Cap or the final Block.</p>
               
             </div>
           </div>

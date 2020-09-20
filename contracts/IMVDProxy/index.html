@@ -132,6 +132,22 @@
 <li><strong>Title:</strong> Proxy Interface</li>
 </ul>
 <h2 id="methods">Methods</h2>
+<h3 id="callfrommanageraddressbytes">callFromManager(address,bytes)</h3>
+<p>callable by the MVDFunctionalitiesManager only. Calls a Microservice using the Proxy as msg.sender</p>
+<h3 id="disableproposaladdress">disableProposal(address)</h3>
+<p>Can be used by external Proposal Managers to disable not-yet started Surveys</p>
+<h3 id="emiteventstringbytesbytesbytes">emitEvent(string,bytes,bytes,bytes)</h3>
+<p>callable by Microservices only. Emits the general purpose "Event" event by the Proxy</p>
+<h3 id="emitfrommanagerstringaddressstringaddressuint256addressboolstringboolbooladdress">emitFromManager(string,address,string,address,uint256,address,bool,string,bool,bool,address)</h3>
+<p>callable by the MVDFunctionalitiesManager only. Emits the FunctionalitySet event by the Proxy</p>
+<h3 id="flushtowalletaddressbooluint256">flushToWallet(address,bool,uint256)</h3>
+<p>Utility public method callable by everyone to send all ether/tokens/NFT accidentally sent to the Proxy. It flushes all in the DFO Wallet</p>
+<h4 id="params">Params</h4>
+<ul>
+<li><code>is721</code>: tokenAddress is 721 or ERC20</li>
+<li><code>tokenAddress</code>: the ERC20/ERC721 token to transfer. address(0) means flush ether</li>
+<li><code>tokenId</code>: the id of the eventual ERC721 Token to transfer</li>
+</ul>
 <h3 id="getdoubleproxyaddress">getDoubleProxyAddress()</h3>
 <p>GET the Double Proxy contract address</p>
 <h3 id="getmvdfunctionalitiesmanageraddress">getMVDFunctionalitiesManagerAddress()</h3>
@@ -148,7 +164,7 @@
 <p>GET the voting token contract address</p>
 <h3 id="initaddressaddressaddressaddressaddressaddressaddress">init(address,address,address,address,address,address,address)</h3>
 <p>Initialization logic used during the constructor call</p>
-<h4 id="params">Params</h4>
+<h4 id="params_1">Params</h4>
 <ul>
 <li><code>doubleProxyAddress</code>: Address of the double proxy</li>
 <li><code>functionalitiesManagerAddress</code>: Address of the Functionalities Manager</li>
@@ -160,27 +176,45 @@
 </ul>
 <h3 id="newproposalstringbooladdressuint256addressboolstringstringboolboolstring">newProposal(string,bool,address,uint256,address,bool,string,string,bool,bool,string)</h3>
 <p>Add a new proposal</p>
-<h4 id="params_1">Params</h4>
+<h4 id="params_2">Params</h4>
 <ul>
-<li><code>codeName</code>: ID of the Proposal</li>
+<li><code>codeName</code>: ID of the microservice, to be called by the user through Proxy, can be blank.</li>
 <li><code>emergency</code>: Boolean, true -&gt; Emergency Proposal, false -&gt; Standard Proposal</li>
 <li><code>isInternal</code>: Boolean flag controlling wether the microservice can be called from anyone (false) or can be called only by other microservices (true)</li>
 <li><code>location</code>: Address of the functionality/microservice to call</li>
 <li><code>methodSignature</code>: Name of the method of the microservice you want to call</li>
 <li><code>needsSender</code>: All microservices calls are made py the Proxy, with this boolean flag you can</li>
-<li><code>replaces</code>: // DOCUMENT</li>
+<li><code>replaces</code>: codeName of the microservice that will be replaced by this Proposal, can be blank.</li>
 <li><code>returnParametersJSONArray</code>: Array of json encoded return parameters of the proposal</li>
-<li><code>sourceLocation</code>: ROBE location of the source code</li>
-<li><code>sourceLocationId</code>: ROBE id</li>
+<li><code>sourceLocation</code>: Location of the source code, saved in concatenated Base64 data chunks</li>
+<li><code>sourceLocationId</code>: Base64 data chunk id of the corresponding Microservice</li>
 <li><code>submittable</code>: Boolean flag controlling wether the microservice writes data to the chain</li>
 </ul>
 <h4 id="returns">Returns</h4>
 <ul>
 <li><code>proposalAddress</code>: Address of the newly created proposal</li>
 </ul>
+<h3 id="readstringbytes">read(string,bytes)</h3>
+<p>Call a non-submitable (readonly function marked as pure or view) Microservice</p>
+<h4 id="params_3">Params</h4>
+<ul>
+<li><code>codeName</code>: the ID of the Microservice to be called</li>
+<li><code>data</code>: ABI encoded data payload to be passed to the Microservice</li>
+</ul>
+<h3 id="setproposal">setProposal()</h3>
+<p>Callable by the Proposals only. Starts the Proposal finalization procedure</p>
+<h3 id="startproposaladdress">startProposal(address)</h3>
+<p>Can be used by external Proposal Managers to delay the Survey Start</p>
+<h3 id="submitstringbytes">submit(string,bytes)</h3>
+<p>Call a submitable (which writes on the Blockchain State) Microservice</p>
+<h4 id="params_4">Params</h4>
+<ul>
+<li><code>codeName</code>: the ID of the Microservice to be called</li>
+<li><code>data</code>: ABI encoded data payload to be passed to the Microservice</li>
+</ul>
 <h3 id="transferaddressuint256address">transfer(address,uint256,address)</h3>
 <p>Transfer a token to an address</p>
-<h4 id="params_2">Params</h4>
+<h4 id="params_5">Params</h4>
 <ul>
 <li><code>receiver</code>: Address of the receiver</li>
 <li><code>token</code>: Address of the token to transfer</li>
@@ -188,9 +222,9 @@
 </ul>
 <h3 id="transfer721addressuint256bytesbooladdress">transfer721(address,uint256,bytes,bool,address)</h3>
 <p>Transfer an ERC721 to an address</p>
-<h4 id="params_3">Params</h4>
+<h4 id="params_6">Params</h4>
 <ul>
-<li><code>data</code>: // DOCUMENTATION</li>
+<li><code>data</code>: The optional payload to pass in the safeTransferFrom function</li>
 <li><code>receiver</code>: Address of the receiver</li>
 <li><code>safe</code>: Boolean flag for triggering the SafeTransfer</li>
 <li><code>token</code>: Address of the token to transfer</li>

@@ -131,16 +131,17 @@
 <li><strong>Version:</strong> 1</li>
 <li><strong>Title:</strong> Double Proxy Interface</li>
 </ul>
+<p>Double Proxy is the easiest way for side/external Contracts to locate and query the DFO. As the main Core Contract of a DFO is the Proxy, it also can be updated by Proposals. So, directly link the Proxy to external Contracts can be really a problem. To avoid this, it is better to link external contracts with the DoubleProxy. DoubleProxy is the Proxy of the Proxy, and is a Delegate that keeps track of the most recent Proxy address and all the other previous Proxies. Because it has a very lightweight and simple structure and logic, it does not need of changes, so it can be used as a secure anchor.</p>
 <h2 id="methods">Methods</h2>
 <h3 id="initaddressaddress">init(address[],address)</h3>
 <p>Initializer logic used during the constructor call</p>
 <h4 id="params">Params</h4>
 <ul>
-<li><code>currentProxy</code>: Address of the current proxy</li>
+<li><code>currentProxy</code>: Address of the current Proxy</li>
 <li><code>proxies</code>: Array of address of the old proxies, only used in legacy scenarios. Can be left empty.</li>
 </ul>
 <h3 id="isproxyaddress">isProxy(address)</h3>
-<p>Check if the address is or has been a proxy</p>
+<p>Check if the address is or has been a Proxy</p>
 <h3 id="proxies">proxies()</h3>
 <p>Retrieve all the proxies</p>
 <h3 id="proxiesuint256uint256">proxies(uint256,uint256)</h3>
@@ -153,9 +154,9 @@
 <h3 id="proxieslength">proxiesLength()</h3>
 <p>GET the number of proxies</p>
 <h3 id="proxy">proxy()</h3>
-<p>GET the proxy</p>
+<p>GET the current Proxy</p>
 <h3 id="setproxy">setProxy()</h3>
-<p>SET the proxy</p>
+<p>Method callable by the current Proxy only. It is used when the Proxy or this delegate changes.</p>
               
             </div>
           </div>

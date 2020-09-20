@@ -131,13 +131,13 @@
 <li><strong>Version:</strong> 1</li>
 <li><strong>Title:</strong> Wallet</li>
 </ul>
-<p>// DOCUMENTATION</p>
+<p>The wallet is used to store all the assets of a DFO (ethers, ERC20 Tokens, ERC721 NFTs). All the functions to transfer assets can be called by the Proxy only.</p>
 <h2 id="methods">Methods</h2>
 <h3 id="flush721tonewwalletuint256bytesbooladdress">flush721ToNewWallet(uint256,bytes,bool,address)</h3>
 <p>Transfer an ERC721 to the NewWallet</p>
 <h4 id="params">Params</h4>
 <ul>
-<li><code>data</code>: // DOCUMENTATION</li>
+<li><code>data</code>: The optional payload passed in the safeTransferFrom function</li>
 <li><code>safe</code>: Boolean flag for triggering the SafeTransfer</li>
 <li><code>tokenAddress</code>: Address of the token to transfer</li>
 <li><code>tokenId</code>: ID of the ERC721 to transfer</li>
@@ -155,7 +155,7 @@
 <h4 id="params_2">Params</h4>
 <ul>
 <li><code>newWallet</code>: New wallet address</li>
-<li><code>tokenAddress</code>: // DOCUMENT</li>
+<li><code>tokenAddress</code>: The voting token, used to flush balance to new wallet</li>
 </ul>
 <h3 id="setproxy">setProxy()</h3>
 <p>SET the proxy address</p>
@@ -171,7 +171,7 @@
 <p>Transfer an ERC721 to an address</p>
 <h4 id="params_4">Params</h4>
 <ul>
-<li><code>data</code>: // DOCUMENTATION</li>
+<li><code>data</code>: The optional payload to pass in the safeTransferFrom function</li>
 <li><code>receiver</code>: Address of the receiver</li>
 <li><code>safe</code>: Boolean flag for triggering the SafeTransfer</li>
 <li><code>token</code>: Address of the token to transfer</li>

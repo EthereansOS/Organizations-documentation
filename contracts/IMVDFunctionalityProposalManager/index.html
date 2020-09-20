@@ -133,6 +133,8 @@
 </ul>
 <p>Microservice for adding new proposals</p>
 <h2 id="methods">Methods</h2>
+<h3 id="checkproposaladdress">checkProposal(address)</h3>
+<p>Callable by the Proxy only. Contains the logic to check if a proposal is ready to be finalized (e.g. last block reached or hard cap reached).</p>
 <h3 id="getproxy">getProxy()</h3>
 <p>GET the Proxy contract address</p>
 <h3 id="isvalidproposaladdress">isValidProposal(address)</h3>
@@ -146,13 +148,13 @@
 <li><code>isValid</code>: Boolean indicating the validity of the function</li>
 </ul>
 <h3 id="newproposalstringaddressstringstringstring">newProposal(string,address,string,string,string)</h3>
-<p>Add a new Proposal</p>
+<p>Add a new Proposal Work explanation: codeName is set and replaces is blank: the Proposal will add a new Microservice/Functionality codeName is blank and replaces is set: the Proposal will remove an existing Microservice/Functionality codeName and replaces are both set: the Proposal will replace an existing Functionality/Microservice with a new one codeName and replaces are both blank: the Proposal represents a One-Time Functionality, that will be executed just one time, if the Token Holders Pccepts this proposal.</p>
 <h4 id="params_1">Params</h4>
 <ul>
-<li><code>codeName</code>: ID of the proposal</li>
+<li><code>codeName</code>: ID of the microservice, to be called by the user through Proxy, can be blank.</li>
 <li><code>location</code>: Address of the functionality/microservice to call</li>
 <li><code>methodSignature</code>: Name of the method of the microservice you want to call</li>
-<li><code>replaces</code>: // DOCUMENT</li>
+<li><code>replaces</code>: codeName of the microservice that will be replaced by this Proposal, can be blank.</li>
 <li><code>returnAbiParametersArray</code>: Array of return values obtained from the called microservice's method</li>
 </ul>
 <h4 id="returns_1">Returns</h4>
